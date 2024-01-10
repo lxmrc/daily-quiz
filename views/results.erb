@@ -1,0 +1,9 @@
+<h2>Your Results</h2>
+<% @results.each do |id, info| %>
+  <div>
+    <p>Question: <%= info[:question] %></p>
+    <p>Your Answer: <%= info[:user_answer] %></p>
+    <p>Correct Answer: <%= info[:correct_answer] %></p>
+    <p><%= info[:is_correct] ? "Correct!" : "Incorrect." %></p>
+  </div>
+<% end %>

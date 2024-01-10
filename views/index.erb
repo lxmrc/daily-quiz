@@ -1,0 +1,14 @@
+<form action="/submit" method="post">
+  <% @questions.each do |question| %>
+    <div>
+      <p><%= question.question %></p>
+      <% [question.answer, question.option1, question.option2, question.option3].shuffle.each do |option| %>
+        <label>
+          <input type="radio" name="answer_<%= question.id %>" value="<%= option %>">
+          <%= option %>
+        </label><br>
+      <% end %>
+    </div>
+  <% end %>
+  <input type="submit" value="Submit">
+</form>
