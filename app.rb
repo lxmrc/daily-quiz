@@ -30,6 +30,8 @@ post '/submit' do
     }
   end
 
+  @total_correct = @results.count { |_, result| result[:is_correct] }
+
   erb :results
 end
 
