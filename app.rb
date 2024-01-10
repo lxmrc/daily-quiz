@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'net/http'
 require 'json'
-require 'dotenv'
+require 'dotenv/load'
 require './models'
 
 set :database, {adapter: 'sqlite3', database: 'quiz.db'}
@@ -12,11 +12,13 @@ before do
 end
 
 get '/' do
+  @page_title = "Daily Quiz"
   @questions = Question.where(date: Date.today)
   erb :index
 end
 
 post '/submit' do
+  @page_title = "Your Results"
   @responses = params.select { |k, _| k.start_with?("answer_") }
   @questions = Question.where(id: @responses.keys.map { |k| k.split('_').last.to_i })
 

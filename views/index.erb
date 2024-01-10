@@ -1,14 +1,15 @@
 <form action="/submit" method="post">
   <% @questions.each do |question| %>
-    <div>
-      <p><%= question.question %></p>
-      <% [question.answer, question.option1, question.option2, question.option3].shuffle.each do |option| %>
-        <label>
-          <input type="radio" name="answer_<%= question.id %>" value="<%= option %>">
+    <div class="block" style="margin-bottom: 1em;">
+      <p class="question"><%= question.question %></p>
+      <% [question.answer, question.option1, question.option2, question.option3].each do |option| %>
+        <label class="option">
+          <input type="radio" name="answer_<%= question.id %>" value="<%= ERB::Util.html_escape(option) %>">
           <%= option %>
-        </label><br>
+        </label>
       <% end %>
+      <br/>
     </div>
   <% end %>
-  <input type="submit" value="Submit">
+  <button class="block accent" type="submit">Submit!</button>
 </form>

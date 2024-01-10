@@ -1,13 +1,12 @@
-<h2>Your Quiz Results</h2>
-<p>You got <%= @total_correct %> out of <%= @results.size %> questions right.</p>
+<p>You got <%= @total_correct %> out of <%= @results.size %> questions right!</p>
 
-<% @results.each do |id, info| %>
-  <div style="<%= info[:is_correct] ? 'color: green;' : 'color: red;' %>">
-    <p><strong>Question:</strong> <%= info[:question] %></p>
-    <p><strong>Your Answer:</strong> <%= info[:user_answer] %></p>
+<% @results.each do |index, info| %>
+ <% color = info[:is_correct] ? 'green' : 'red' %>
+  <div class="block" style="margin-bottom: 1em">
+    <p><strong><%= index %>. <%= info[:question] %></strong></p>
+    <p style="color: <%= color %>;"><%= info[:user_answer] %></p>
     <% if !info[:is_correct] %>
-      <p><strong>Correct Answer:</strong> <%= info[:correct_answer] %></p>
+      <p><strong>Correct answer:</strong> <%= info[:correct_answer] %></p>
     <% end %>
-    <p><%= info[:is_correct] ? "Correct!" : "Incorrect." %></p>
   </div>
 <% end %>
