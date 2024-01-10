@@ -49,6 +49,7 @@ GEM
       activerecord (>= 4.1)
       sinatra (>= 1.0)
     sqlite3 (1.7.0-arm64-darwin)
+    sqlite3 (1.7.0-x86_64-linux)
     tilt (2.3.0)
     timeout (0.4.1)
     tzinfo (2.0.6)
@@ -56,6 +57,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   pry (~> 0.14.2)
