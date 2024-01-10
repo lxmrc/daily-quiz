@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'net/http'
 require 'json'
+require 'dotenv'
 require './models'
 
 set :database, {adapter: 'sqlite3', database: 'quiz.db'}
@@ -33,7 +34,7 @@ post '/submit' do
 end
 
 def prepare_questions
-  uri = URI('https://the-trivia-api.com/api/questions?limit=20')
+  uri = URI("https://the-trivia-api.com/api/questions?limit=#{ENV['QUESTION_COUNT']}")
   response = Net::HTTP.get(uri)
   fetched_questions = JSON.parse(response)
 
